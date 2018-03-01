@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Posts</h1>
+
+<% if @posts.count == 0%>
+    <div class="container">
+      <p id="notify">There are haven't anymore blog post</p>
+    </div>
+    
+<%else%>    
+  <table class="table">
+    <thead>
+      <tr>
+        <th width="20%">Title</th>
+        <th width="50%">Content</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td><%= post.title %></td>
+          <td><%= post.content %></td>
+          <td><%= link_to 'Show', post %></td>
+          <td><%= link_to 'Edit', edit_post_path(post) %></td>
+          <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure you want to delete this post?' } %></td>
+        </tr>
+      <% end %>
+    </tbody> 
+  </table>
+<%end%>
+<div class="col-md-12 text-center">
+      <%= link_to "Add new blog", new_post_path, :style => 'width: 50%', class: 'btn btn-primary'%>
+    </div>
+<br>
+

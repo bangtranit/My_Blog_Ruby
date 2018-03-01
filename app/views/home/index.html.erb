@@ -1,0 +1,18 @@
+<div class="jumbotron" style="text-align:center;">
+  	<h1 class="display-4">Hello, Welcome to my blog!</h1>
+</div> 
+<div class="row">
+	<% if @posts.count == 0 %>
+		<div class="col-md-12 text-center">
+			<%= link_to "Add new blog", new_post_path, :style => 'width: 50%', class: 'btn btn-primary'%>
+		</div>
+	<%end%>
+	
+	<% @posts.each do |post| %>
+		<div class="col-sm-4">
+			<h3><%= post.title %></h3>
+			<p> <%= truncate(post.content, length: 150) %></p>
+			<%= link_to 'Read more', post_path(post)%>
+		</div>
+	<%end%>
+</div>
